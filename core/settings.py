@@ -31,7 +31,10 @@ if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
-PROJECT_APPS = []
+PROJECT_APPS = [
+    "apps.blog",
+    "apps.category",
+]
 
 THIRD_PARTY_APPS = [
     "corsheaders",
