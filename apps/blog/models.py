@@ -1,5 +1,7 @@
 from django.db import models
 import uuid
+from apps.category.models import Category
+from django.utils import timezone
 
 # Create your models here.
 
@@ -18,13 +20,36 @@ class Post(models.Model):
         ("published", "Published"),
     )
 
-    blog_uuid = models.UUIDField(default=uuid.uuid4, unique=True)
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True)
-    thumbnail = models.ImageField(upload_to=blog_directory_path)
-    video = models.FileField(upload_to=blog_directory_path, blank=True, null=True)
-    description = models.TextField()
-    excerpt = models.CharField(max_length=100)
+    blog_uuid =     models.UUIDField(default=uuid.uuid4, unique=True)
+    title =          models.CharField(max_length=255)
+    slug =          models.SlugField(unique=True)
+    thumbnail =         models.ImageField(upload_to=blog_directory_path)
+    video =          models.FileField(upload_to=blog_directory_path, blank=True, null=True)
+    description =   models.TextField()
+    excerpt =        models.CharField(max_length=100)
 
     # author =        models.CharField(max_length=255)
-    # category =      models.ForeignKey(BlogCategory, on_delete=models.PROTECT)
+    category =      models.ForeignKey(Category, on_delete=models.PROTECT)
+
+    published =      models.DateTimeField(default=timezone.now)
+
+    status =            models.CharField(max_length=10, choices=options, default="draft")
+
+    objects =       models.Manager() #default manager
+    postobjects =   PostObjects()   # custom manager
+
+    class Meta:
+        ordering = ('-published',)
+
+    def __str__(self):
+        return self.title
+    
+    def get_video(self):
+        if self.video:
+            return self.video.url
+        return ''
+    
+    def get_thumbnail(self):
+        if self.thumbnail:
+            return self.thumbnail.url
+        return ''
