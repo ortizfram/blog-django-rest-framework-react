@@ -9,6 +9,7 @@ const user = {
   imageUrl:
     'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
+
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
   { name: 'Calendar', href: '#', current: false },
@@ -27,7 +28,7 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <>
+    <div>
       {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
       <Popover
         as="header"
@@ -190,6 +191,6 @@ export default function Example() {
           </>
         )}
       </Popover>
-    </>
+    </div>
   )
 }
