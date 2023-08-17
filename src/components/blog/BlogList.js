@@ -4,6 +4,7 @@ import React from "react";
 import { get_blog_list, get_blog_list_page } from "redux/actions/blog";
 import { useEffect } from "react";
 import LoadingCard from "components/loaders/LoadingCard";
+import BlogCard from "./BlogCard";
 
 
 function BlogList({ get_blog_list, get_blog_list_page, blog_list }) {
@@ -30,7 +31,10 @@ function BlogList({ get_blog_list, get_blog_list_page, blog_list }) {
 
                 {
                     blog_list.map(post=>(
-                        <>POST</>
+                        <>
+                        <BlogCard />
+                        <BlogCard />
+                        </>
                     ))
                 }
 
