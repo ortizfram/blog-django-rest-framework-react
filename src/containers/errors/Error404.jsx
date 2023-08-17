@@ -1,5 +1,4 @@
 import React from "react";
-import monkeyImage from "./monkey.png"; // Replace with the actual path to your monkey image
 import FullWithLayout from "hocs/layouts/FullWithLayout";
 
 function Error404() {
