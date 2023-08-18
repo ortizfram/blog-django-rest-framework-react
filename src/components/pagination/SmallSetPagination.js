@@ -1,5 +1,6 @@
 import { ArrowNarrowLeftIcon, ArrowNarrowRightIcon } from '@heroicons/react/solid'
 import { useState } from 'react';
+import { get_blog_list_page,blog_list, get_blog_list } from 'redux/actions/blog';
 
 function SmallSetPagination({get_blog_list_page, blog_list, count}){
 
@@ -7,7 +8,6 @@ function SmallSetPagination({get_blog_list_page, blog_list, count}){
     const [listingsPerPage, setListingsPerPage] = useState(6);
     const [currentPage, setCurrentPage] = useState(1);
 
-// nav pagination buttons ----------------------------------
     const visitPage = (page) => {
         // window.scrollTo(0, 0);
         setCurrentPage(page);
@@ -31,7 +31,7 @@ function SmallSetPagination({get_blog_list_page, blog_list, count}){
           get_blog_list_page(currentPage+1)
       }
     };
-// end nav pagination function buttons ---------------------------------------
+
     let numbers = [];
 
     const getNumbers = () => {
@@ -76,7 +76,7 @@ function SmallSetPagination({get_blog_list_page, blog_list, count}){
         <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
           
           <div className="-mt-px w-0 flex-1 flex">
-           {/* nav pagination buttons ---------------------------------------   */}
+        
             <button
               onClick={()=>{previous_number()}}
               className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
@@ -96,7 +96,6 @@ function SmallSetPagination({get_blog_list_page, blog_list, count}){
               Next
               <ArrowNarrowRightIcon className="ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
             </button>
-            {/* end nav pagination buttons ---------------------------------------   */}
           </div>
 
         </nav>
