@@ -5,13 +5,14 @@ import { get_blog_list, get_blog_list_page } from "redux/actions/blog";
 import { useEffect } from "react";
 import LoadingCard from "components/loaders/LoadingCard";
 import BlogCard from "./BlogCard";
-import SmallSetPagination from "components/pagination/SmallSetPagination";
+import CategoriesSmallSetPagination from "components/pagination/CategoriesSmallSetPagination";
 
 
 function BlogList({ 
   get_blog_list_page,
   blog_list,
-  count 
+  count ,
+  category_id
 }) {
 
   useEffect(() => {
@@ -37,10 +38,11 @@ function BlogList({
                         ))
                     }
                 </div>
-                <SmallSetPagination 
+                <CategoriesSmallSetPagination
                     get_blog_list_page={get_blog_list_page} 
                     blog_list={blog_list} 
                     count={count}
+                    category_id={category_id}
                 />
             </div>
         </div>
