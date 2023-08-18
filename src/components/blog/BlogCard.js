@@ -1,5 +1,3 @@
-import React from 'react'
-
 function BlogCard() {
   return (
     <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
