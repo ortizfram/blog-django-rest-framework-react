@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
 
-from .models import Post
+from .models import Post, Category
 from .serializers import PostSerializer
 from .pagination import SmallSetPagination, MediumSetPagination, LargeSetPagination
 
@@ -15,6 +15,23 @@ class BlogListView(APIView):
         if Post.postobjects.all().exists():
 
             posts= Post.postobjects.all()
+
+            paginator = SmallSetPagination()
+            results = paginator.paginate_queryset(posts, request)
+            serializer = PostSerializer(results, many=True)
+
+            return paginator.get_paginated_response({'posts': serializer.data})
+        else: 
+            return Response({'error':'No posts Found'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
+
+class BlogListCategoryView(APIView):
+    # return posts as JSON
+    def get(self, request,category_id, format=None):
+        if Post.postobjects.all().exists():
+            
+            category = Category.objects.get(id=category_id)
+
+            posts= Post.postobjects.all().filter(category=category)
 
             paginator = SmallSetPagination()
             results = paginator.paginate_queryset(posts, request)
