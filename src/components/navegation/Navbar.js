@@ -1,8 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const navigation = [
@@ -17,6 +17,21 @@ function classNames(...classes) {
 }
 
 function Navbar() {
+
+  // SEARCH
+  const [effectSearch, setEffectSearch] = useState(false);
+  const [term,setTerm]=useState('')
+
+  const handleChange=e=>{
+    setTerm(e.target.value)
+  }
+
+  const onSubmit= e =>{
+    e.preventDefault()
+    setTimeout(() => window.location.href=('/search/'+term), 0.2);
+    setTerm('')
+  }
+
   return (
     <div>
       {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
@@ -46,26 +61,30 @@ function Navbar() {
                 </div>
                 <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
                   <div className="flex items-center px-6 py-4 md:max-w-3xl md:mx-auto lg:max-w-none lg:mx-0 xl:px-0">
-                    <div className="w-full">
+                    <form onSubmit={e=>onSubmit(e)} className="w-full">
                       <label htmlFor="search" className="sr-only">
                         Search
                       </label>
                       <div className="relative">
-                        <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+                        <button 
+                          type="submit"
+                          className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
                           <SearchIcon
                             className="h-5 w-2 text-gray-400"
                             aria-hidden="true"
                           />
-                        </div>
+                        </button>
                         <input
+                        onChange={(e)=>{handleChange(e)}}
                           id="search"
                           name="search"
+                          required
                           className="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          placeholder="Search"
+                          placeholder="Search for a post"
                           type="search"
                         />
                       </div>
-                    </div>
+                    </form>
                   </div>
                 </div>
                 <div className="flex items-center md:absolute md:right-0 md:inset-y-0 lg:hidden">
@@ -113,12 +132,12 @@ function Navbar() {
                     ></Transition>
                   </Menu>
 
-                  <a
-                    href="#"
+                  <Link
+                    to="/contact"
                     className="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    New Project
-                  </a>
+                    Hire me
+                  </Link>
                 </div>
               </div>
             </div>
