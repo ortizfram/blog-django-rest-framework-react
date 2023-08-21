@@ -153,31 +153,3 @@ export const get_blog = (slug) => async dispatch => {
         });
     }
 };
-
-// export const search_blog = (search_term) => async dispatch => {
-
-//     const config = {
-//         headers: {
-//             'Accept': 'application/json'
-//         }
-//     };
-
-//     try {
-//         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/search/${search_term}`, config);
-
-//         if (res.status === 200) {
-//             dispatch({
-//                 type: GET_SEARCH_BLOG_SUCCESS,
-//                 payload: res.data
-//             });
-//         } else {
-//             dispatch({
-//                 type: GET_SEARCH_BLOG_FAIL
-//             });
-//         }
-//     } catch (err) {
-//         dispatch({
-//             type: GET_SEARCH_BLOG_FAIL
-//         });
-//     }
-//     };

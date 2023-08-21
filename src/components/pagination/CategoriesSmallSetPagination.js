@@ -1,6 +1,5 @@
 import { ArrowNarrowLeftIcon, ArrowNarrowRightIcon } from '@heroicons/react/solid'
 import { useState } from 'react';
-import { get_blog_list_page,blog_list, get_blog_list } from 'redux/actions/blog';
 
 function CategoriesSmallSetPagination({get_blog_list_page, blog_list, count, category_id}){
 
@@ -12,7 +11,7 @@ function CategoriesSmallSetPagination({get_blog_list_page, blog_list, count, cat
         // window.scrollTo(0, 0);
         setCurrentPage(page);
         setActive(page);
-        get_blog_list_page(category_id, page)
+        get_blog_list_page(category_id,page)
     }
 
     const previous_number = () => {
@@ -20,16 +19,15 @@ function CategoriesSmallSetPagination({get_blog_list_page, blog_list, count, cat
         if (currentPage !== 1) {
             setCurrentPage(currentPage-1);
             setActive(currentPage-1);
-            get_blog_list_page(category_id, currentPage-1)
+            get_blog_list_page(category_id,currentPage-1)
         }
     };
 
-    const next_number = () => {
-      // window.scrollTo(0, 0);
+    const next_number = () => {window.scrollTo(0, 0);
       if (currentPage !== Math.ceil(blog_list.length/3)) {
           setCurrentPage(currentPage+1);
           setActive(currentPage+1);
-          get_blog_list_page(category_id, currentPage+1)
+          get_blog_list_page(category_id,currentPage+1)
       }
     };
 
