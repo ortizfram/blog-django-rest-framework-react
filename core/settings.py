@@ -37,7 +37,6 @@ PROJECT_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'fontawesomefree',
     "corsheaders",
     "rest_framework",
     "ckeditor",
