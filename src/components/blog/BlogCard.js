@@ -12,7 +12,7 @@ function BlogCard(data) {
       <div className="flex-shrink-0">
         <img
           className="h-48 w-full object-cover"
-          src={post.thumbnail ? post.thumbnail.url : "placeholder-image-url"}
+          src={post.thumbnail ? post.thumbnail : "placeholder-image-url"}
           alt=""
         />
       </div>
