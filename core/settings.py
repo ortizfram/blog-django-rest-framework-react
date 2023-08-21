@@ -37,8 +37,6 @@ PROJECT_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    "react-icons",
-    'fontawesomefree',
     "corsheaders",
     "rest_framework",
     "ckeditor",

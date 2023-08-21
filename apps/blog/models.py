@@ -7,7 +7,7 @@ from django.utils import timezone
 
 
 def blog_directory_path(instance, filename):
-    return "blog/{0}/{1}".format(instance.title, filename)
+    return 'blog/{0}/{1}'.format(instance.title, filename)
 
 
 class Post(models.Model):
