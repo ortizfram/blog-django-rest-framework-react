@@ -11,6 +11,7 @@ from .pagination import SmallSetPagination, MediumSetPagination, LargeSetPaginat
 
 from django.db.models.query_utils import Q
 
+
 class BlogListView(APIView):
     # return posts as JSON
     def get(self, request, format=None):

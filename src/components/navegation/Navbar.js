@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const navigation = [
@@ -80,7 +80,7 @@ function Navbar() {
                           name="search"
                           required
                           className="block w-full bg-white border border-gray-300 rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-500 focus:outline-none focus:text-gray-900 focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                          placeholder="Search"
+                          placeholder="Search for a post"
                           type="search"
                         />
                       </div>
@@ -132,12 +132,12 @@ function Navbar() {
                     ></Transition>
                   </Menu>
 
-                  <a
-                    href="#"
+                  <Link
+                    to="/contact"
                     className="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    New Project
-                  </a>
+                    Hire me
+                  </Link>
                 </div>
               </div>
             </div>

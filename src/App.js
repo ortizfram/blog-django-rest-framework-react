@@ -1,5 +1,6 @@
 
 import Error404 from "containers/errors/Error404";
+import Contact from "containers/pages/Contact";
 import Home from "containers/pages/Home";
 import Search from "containers/pages/Search";
 import Blog from "containers/pages/blog/Blog";
@@ -22,11 +23,15 @@ function App() {
           {/* Home Display */}
           <Route path="/" element={<Home/>}/>
 
+          {/* Contact Display */}
+          <Route path="/contact" element={<Contact/>}/>
+
           {/* Blog */}
           <Route path="/blog" element={<Blog/>}/>
           <Route path="/blog/post/:slug" element={<BlogPost/>}/>
           <Route path="/blog/categories/:category_id" element={<BlogCategory/>}/>
 
+          {/* search */}
           <Route path="/search/:term" element={<Search/>}/>
 
           
