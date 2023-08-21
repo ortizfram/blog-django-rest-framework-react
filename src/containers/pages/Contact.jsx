@@ -6,6 +6,8 @@ import FullWithLayout from "hocs/layouts/FullWithLayout";
 import { Link } from "react-router-dom";
 
 function Contact() {
+
+  
   return (
     <FullWithLayout>
       <div className="relative bg-white">
