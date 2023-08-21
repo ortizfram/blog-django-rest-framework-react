@@ -9,6 +9,8 @@ from .models import Post, Category
 from .serializers import PostSerializer
 from .pagination import SmallSetPagination, MediumSetPagination, LargeSetPagination
 
+from django.db.models.query_utils import Q
+
 class BlogListView(APIView):
     # return posts as JSON
     def get(self, request, format=None):
@@ -46,3 +48,16 @@ class PostDetailView(APIView):
         post =          get_object_or_404(Post, slug=post_slug)
         serializer =    PostSerializer(post)
         return Response({'post':serializer.data}, status=status.HTTP_200_OK)
+
+class SearchBlogView(APIView):
+     def get(self,request,search_term):
+         matches= Post.postobjects.filter(
+             Q(title__icontains=search_term) |
+             Q(description__icontains=search_term) |
+             Q(category__name__icontains=search_term) 
+         )
+
+         paginator = MediumSetPagination()
+         # results
+         serializer = PostSerializer(matches, many=True)
+         return Response({'filtered_posts':serializer.data}, status=status.HTTP_200_OK)
