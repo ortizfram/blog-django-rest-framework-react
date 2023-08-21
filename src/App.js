@@ -10,6 +10,9 @@ import BlogCategory from "containers/pages/blog/category/BlogCategory";
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import store from "store";
 
 function App() {
